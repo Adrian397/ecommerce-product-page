@@ -1,0 +1,30 @@
+ul {
+  display: flex;
+  list-style: none;
+  margin-left: 5rem;
+}
+
+ul li {
+  margin: 0rem 1rem;
+  color: hsl(219, 9%, 45%);
+  cursor: pointer;
+  position: relative;
+}
+ul li:hover {
+  color: hsl(220, 13%, 13%);
+}
+
+ul li::after {
+  content: "";
+  position: absolute;
+  background: hsl(26, 100%, 55%);
+  height: 4px;
+  width: 100%;
+  left: 0;
+  bottom: -3.35rem;
+  display: none;
+}
+
+ul li:hover::after {
+  display: block;
+}

@@ -1,0 +1,63 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.description p {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  line-height: 1.5rem;
+  color: hsl(219, 9%, 45%);
+}
+
+.description-title {
+  padding: 1rem 0rem;
+}
+
+.description-heading {
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  color: hsl(26, 100%, 55%);
+}
+
+.prices {
+  display: flex;
+  align-items: center;
+}
+
+.prices span {
+  padding: 0.1rem 0.5rem;
+  border-radius: 5px;
+  margin-left: 1.5rem;
+  background: hsl(25, 100%, 94%);
+  color: hsl(26, 100%, 55%);
+  font-weight: bold;
+}
+
+.og-price {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-decoration: line-through;
+  color: hsl(220, 14%, 75%);
+}
+
+.buttons {
+  margin-top: 3rem;
+  display: flex;
+}
+.buttons button {
+  margin-left: 3rem;
+  padding: 0.8rem 3rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  background: hsl(26, 100%, 55%);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0px 15px 40px -5px hsl(26, 100%, 55%);
+  cursor: pointer;
+}
