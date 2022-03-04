@@ -7,7 +7,7 @@ const MainImage = () => {
   return (
     <img
       className={styles["main-img"]}
-      src={require("../../assets/images/image-product-1.jpg")}
+      src={ctx.activeImg.img}
       alt="mainImg"
       onClick={ctx.openModal}
     ></img>

@@ -1,7 +1,10 @@
 import styles from "./LeftArrow.module.css";
+import Context from "../../store/context";
+import { useContext } from "react";
 const LeftArrow = () => {
+  const ctx = useContext(Context);
   return (
-    <div className={styles.arrow}>
+    <div onClick={ctx.prevPhoto} className={styles.arrow}>
       <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M11 1 3 9l8 8"
