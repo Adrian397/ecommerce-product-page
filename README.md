@@ -1,4 +1,4 @@
-# E-commerce Product Page made with React.js
+# Ecommerce Product Page made with React.js
 
 Live site: https://ecommerce-product-page-54ad14.netlify.app
 
