@@ -13,14 +13,7 @@ svg {
   cursor: pointer;
 }
 
-/* .test {
-  border: 10px solid black;
-} */
-
-/* .siema {
-  border: 10px solid hsl(26, 100%, 55%);
-} */
-
-.active {
-  border: 10px solid black;
+html,
+body {
+  overflow-x: hidden;
 }
