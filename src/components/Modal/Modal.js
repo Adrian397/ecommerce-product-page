@@ -17,20 +17,24 @@ const Modal = () => {
         <MainImage />
         <div>
           <Thumbnail
+            id="0"
             img={require("../../assets/images/image-product-1-thumbnail.jpg")}
-            onClick={ctx.firstPhoto}
+            onClick={ctx.photoHandler}
           />
           <Thumbnail
+            id="1"
             img={require("../../assets/images/image-product-2-thumbnail.jpg")}
-            onClick={ctx.secondPhoto}
+            onClick={ctx.photoHandler}
           />
           <Thumbnail
+            id="2"
             img={require("../../assets/images/image-product-3-thumbnail.jpg")}
-            onClick={ctx.thirdPhoto}
+            onClick={ctx.photoHandler}
           />
           <Thumbnail
+            id="3"
             img={require("../../assets/images/image-product-4-thumbnail.jpg")}
-            onClick={ctx.fourthPhoto}
+            onClick={ctx.photoHandler}
           />
         </div>
         <LeftArrow />

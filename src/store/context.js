@@ -3,120 +3,138 @@ import { createContext } from "react";
 
 const data = [
   {
-    id: "1",
     img: require("../assets/images/image-product-1.jpg"),
   },
   {
-    id: "2",
     img: require("../assets/images/image-product-2.jpg"),
   },
   {
-    id: "3",
     img: require("../assets/images/image-product-3.jpg"),
   },
   {
-    id: "4",
     img: require("../assets/images/image-product-4.jpg"),
   },
 ];
 
-const Context = createContext({
-  modal: false,
-  activeImg: undefined,
-  activeImgStyle: undefined,
-  openModal: () => {},
-  removeModal: () => {},
-  firstPhoto: () => {},
-  secondPhoto: () => {},
-  thirdPhoto: () => {},
-  fourthPhoto: () => {},
-  nextPhoto: () => {},
-  prevPhoto: () => {},
-});
+const Context = createContext(null);
 
 export const ContextProvider = (props) => {
   const [modal, setModal] = useState(false);
-  const [imgs, setImgs] = useState([]);
-  const [index, setIndex] = useState(0);
   const [activeImg, setActiveImg] = useState(false);
   const [activeImgStyle, setActiveImgStyle] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+  const [newQuantity, setNewQuantity] = useState(0);
+  const [cart, showCart] = useState(false);
+  const [toCart, setAddToCart] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    setImgs(data);
-
-    if (!activeImg && imgs.length > 0) {
-      setActiveImg(imgs[index]);
+    if (!activeImg && data.length > 0) {
+      setActiveImg(data[0]);
       setActiveImgStyle("first-photo");
     }
-  }, [activeImg, imgs, index]);
 
-  const setModalHandler = () => {
-    setModal(true);
-  };
+    const handleResize = () => {
+      console.log(width);
+      setWidth(window.innerWidth);
+    };
 
-  const removeModalHandler = () => {
-    setModal(false);
-  };
+    window.addEventListener("resize", handleResize);
+    handleResize();
 
-  const firstPhotoHandler = () => {
-    setIndex(0);
-    setActiveImg(imgs[index]);
-    setActiveImgStyle("first-photo");
-  };
+    if (width > 1070) {
+      setMenu(false);
+    }
 
-  const secondPhotoHandler = () => {
-    setIndex(1);
-    setActiveImg(imgs[index]);
-    setActiveImgStyle("second-photo");
-  };
+    return () => window.removeEventListener("resize", handleResize);
+  }, [activeImg, quantity, width]);
 
-  const thirdPhotoHandler = () => {
-    setIndex(2);
-    setActiveImg(imgs[index]);
-    setActiveImgStyle("third-photo");
-  };
-
-  const fourthPhotoHandler = () => {
-    setIndex(3);
-    setActiveImg(imgs[index]);
-    setActiveImgStyle("fourth-photo");
+  const photoHandler = (e) => {
+    if (e.target.id === "0") {
+      setActiveImg(data[0]);
+      setActiveImgStyle("first-photo");
+    }
+    if (e.target.id === "1") {
+      setActiveImg(data[1]);
+      setActiveImgStyle("second-photo");
+    }
+    if (e.target.id === "2") {
+      setActiveImg(data[2]);
+      setActiveImgStyle("third-photo");
+    }
+    if (e.target.id === "3") {
+      setActiveImg(data[3]);
+      setActiveImgStyle("fourth-photo");
+    }
   };
 
   const nextPhotoHandler = () => {
-    if (index < imgs.length - 1) {
-      setIndex((prevState) => prevState + 1);
-    }
-    if (index === imgs.length - 1) {
-      setIndex(0);
-    }
+    let index = data.indexOf(activeImg);
+    console.log(index);
 
-    setActiveImg(imgs[index]);
+    if (index < data.length - 1) {
+      let newIndex = index + 1;
+      setActiveImg(data[newIndex]);
+    }
+    if (index === data.length - 1) {
+      setActiveImg(data[0]);
+    }
   };
 
-  // const previousPhotoHandler = () => {
-  //   setIndex((prevState) => prevState - 1);
+  const previousPhotoHandler = () => {
+    let index = data.indexOf(activeImg);
 
-  //   if (index === 0) {
-  //     setIndex(imgs.length - 1);
-  //   }
+    let newIndex = index - 1;
+    setActiveImg(data[newIndex]);
 
-  //   setIndex((prevState) => prevState - 1);
+    if (index === 0) {
+      newIndex = 3;
+      setActiveImg(data[newIndex]);
+    }
+  };
 
-  //   setActiveImg(imgs[index]);
-  // };
+  const decQuantityHandler = () => {
+    if (quantity === 0) return;
+    setQuantity((prevState) => prevState - 1);
+  };
+
+  const addToCartHandler = () => {
+    if (quantity === 0) return;
+    setNewQuantity(quantity);
+    setAddToCart(true);
+  };
+
+  const setMenuHandler = () => {
+    setMenu((prevState) => !prevState);
+    showCart(false);
+  };
+
+  const showCartHandler = () => {
+    showCart((prevState) => !prevState);
+    setMenu(false);
+  };
 
   const context = {
     modal: modal,
     activeImg: activeImg,
     activeImgStyle: activeImgStyle,
-    openModal: setModalHandler,
-    removeModal: removeModalHandler,
-    firstPhoto: firstPhotoHandler,
-    secondPhoto: secondPhotoHandler,
-    thirdPhoto: thirdPhotoHandler,
-    fourthPhoto: fourthPhotoHandler,
+    quantity: quantity,
+    newQuantity: newQuantity,
+    cart: cart,
+    toCart: toCart,
+    menu: menu,
+    openModal: () => setModal(true),
+    removeModal: () => setModal(false),
+    incQuantity: () => setQuantity((prevState) => prevState + 1),
+    showCart: showCartHandler,
+    setMenu: setMenuHandler,
+    decQuantity: decQuantityHandler,
     nextPhoto: nextPhotoHandler,
-    // prevPhoto: previousPhotoHandler,
+    prevPhoto: previousPhotoHandler,
+    photoHandler: photoHandler,
+    addToCart: addToCartHandler,
+    removeFromCart: () => setAddToCart(false),
   };
   return <Context.Provider value={context}>{props.children}</Context.Provider>;
 };

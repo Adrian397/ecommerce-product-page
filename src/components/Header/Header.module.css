@@ -21,3 +21,25 @@
   display: flex;
   align-items: center;
 }
+
+.header-icons__cart {
+  position: relative;
+  margin-right: 3rem;
+  width: 1.5rem;
+}
+
+@media screen and (max-width: 1070px) {
+  .header {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .header-icons__cart {
+    margin-right: 1.5rem;
+  }
+
+  .header-icons__cart {
+    position: static;
+  }
+}

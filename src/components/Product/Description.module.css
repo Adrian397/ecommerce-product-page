@@ -25,6 +25,18 @@
 .prices {
   display: flex;
   align-items: center;
+
+  justify-content: space-between;
+  width: 100%;
+}
+
+.prices-discount {
+  display: flex;
+  align-items: center;
+}
+
+.prices h3 {
+  display: none;
 }
 
 .prices span {
@@ -60,4 +72,54 @@
   font-weight: bold;
   box-shadow: 0px 15px 40px -5px hsl(26, 100%, 55%);
   cursor: pointer;
+}
+
+@media screen and (max-width: 1070px) {
+  .description {
+    max-width: 90%;
+  }
+
+  .description p {
+    margin-top: 1rem;
+  }
+
+  .description p br {
+    display: none;
+  }
+  .description-heading {
+    margin-top: 3rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons button {
+    width: 100%;
+    margin: 1rem 0rem;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .prices h3 {
+    display: flex;
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    color: hsl(220, 14%, 75%);
+  }
+
+  .og-price {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .buttons {
+    margin-top: 2rem;
+  }
 }

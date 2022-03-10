@@ -7,6 +7,7 @@ const Thumbnail = (props) => {
       src={props.img}
       onClick={props.onClick}
       alt="thumbnail"
+      id={props.id}
     ></img>
   );
 };
