@@ -36,7 +36,6 @@ export const ContextProvider = (props) => {
     }
 
     const handleResize = () => {
-      console.log(width);
       setWidth(window.innerWidth);
     };
 
@@ -71,7 +70,6 @@ export const ContextProvider = (props) => {
 
   const nextPhotoHandler = () => {
     let index = data.indexOf(activeImg);
-    console.log(index);
 
     if (index < data.length - 1) {
       let newIndex = index + 1;
