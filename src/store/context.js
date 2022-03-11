@@ -40,7 +40,6 @@ export const ContextProvider = (props) => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize();
 
     if (width > 1070) {
       setMenu(false);
