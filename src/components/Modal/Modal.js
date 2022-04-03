@@ -13,7 +13,7 @@ const Modal = () => {
 
   return (
     <Backdrop>
-      <div className={styles.modal}>
+      <div onClick={(e) => e.stopPropagation()} className={styles.modal}>
         <MainImage />
         <div>
           <Thumbnail
